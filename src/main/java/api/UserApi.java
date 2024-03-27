@@ -14,13 +14,12 @@ public class UserApi extends BaseSteps {
                 .post(EndPoint.USER);
     }
 
-//    @Step("удаление пользователя")
-//    public Response delete(String accestoken) {
-//        return baseRequest()
-//                .header("Authorization", accestoken)
-//                .when()
-//                .delete(EndPoint.ACTIONS_USER);
-//    }
+    public Response delete (String accestoken) {
+        return getRequestSpec()
+                .header("Authorization", accestoken)
+                .when()
+                .delete(EndPoint.ACTIONS_USER);
+    }
 //
 //    @Step("авторизация")
 //    public Response login(CreatingUser creatingUser) {

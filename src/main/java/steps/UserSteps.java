@@ -22,4 +22,10 @@ public class UserSteps {
                 .then();
     }
 
+    @Step("удаление пользователя")
+    public ValidatableResponse delete(String accessToken) {
+        return userApi.delete(accessToken)
+                .then();
+    }
+
 }

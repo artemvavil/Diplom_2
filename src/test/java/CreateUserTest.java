@@ -1,6 +1,7 @@
 import io.qameta.allure.junit4.DisplayName;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.hamcrest.Matchers;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import api.UserApi;
@@ -18,6 +19,13 @@ public class CreateUserTest {
     @Before
     public void setUp() {
         userSteps = new UserSteps(new UserApi());
+    }
+
+    @After
+    public void cleanUp() {
+        for (String accessToken : accessTokens) {
+            userSteps.delete(accessToken);
+        }
     }
 
     @Test
