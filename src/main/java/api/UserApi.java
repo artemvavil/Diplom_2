@@ -7,28 +7,27 @@ import json.CreatingUser;
 
 public class UserApi extends BaseSteps {
 
-    public static Response create (CreatingUser creatingUser) {
+    public static Response create(CreatingUser creatingUser) {
         return getRequestSpec()
                 .body(creatingUser)
                 .when()
                 .post(EndPoint.USER);
     }
 
-    public Response delete (String accestoken) {
+    public Response delete(String accestoken) {
         return getRequestSpec()
                 .header("Authorization", accestoken)
                 .when()
                 .delete(EndPoint.ACTIONS_USER);
     }
-//
-//    @Step("авторизация")
-//    public Response login(CreatingUser creatingUser) {
-//        return baseRequest()
-//                .body(creatingUser)
-//                .when()
-//                .post(EndPoint.LOGIN);
-//    }
-//
+
+    public Response login(CreatingUser creatingUser) {
+        return getRequestSpec()
+                .body(creatingUser)
+                .when()
+                .post(EndPoint.LOGIN);
+    }
+
 //    @Step("обновление информации о пользователе")
 //    public Response updateInfUser(CreatingUser creatingUser, String accestoken) {
 //        return baseRequest()

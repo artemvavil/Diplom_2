@@ -28,4 +28,13 @@ public class UserSteps {
                 .then();
     }
 
+    @Step("авторизация пользователя")
+    public ValidatableResponse login(String email, String password) {
+        CreatingUser creatingUser = new CreatingUser();
+        creatingUser.setPassword(password);
+        creatingUser.setEmail(email);
+        return userApi.login(creatingUser)
+                .then();
+    }
+
 }
