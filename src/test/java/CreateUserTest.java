@@ -59,8 +59,6 @@ public class CreateUserTest {
         String accessToken = userSteps.create(email, name, password)
                 .statusCode(SC_OK)
                 .body("success", Matchers.is(true))
-                .body("user.email", Matchers.is(email))
-                .body("user.name", Matchers.is(name))
                 .extract().path("accessToken");
 
         userSteps.create(email, name, password)

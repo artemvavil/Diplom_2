@@ -3,6 +3,7 @@ package api;
 import endpoint.EndPoint;
 import io.restassured.response.Response;
 import json.CreatingUser;
+import json.LogOut;
 
 
 public class UserApi extends BaseSteps {
@@ -28,21 +29,19 @@ public class UserApi extends BaseSteps {
                 .post(EndPoint.LOGIN);
     }
 
-//    @Step("обновление информации о пользователе")
-//    public Response updateInfUser(CreatingUser creatingUser, String accestoken) {
-//        return baseRequest()
-//                .header("Authorization", accestoken)
-//                .body(creatingUser)
-//                .when()
-//                .patch(EndPoint.ACTIONS_USER);
-//    }
-//
-//    @Step("выход из системы")
-//    public Response logOut(LogOut logOut, String accestoken) {
-//        return baseRequest()
-//                .header("Authorization", accestoken)
-//                .body(logOut)
-//                .when()
-//                .post(EndPoint.LOGOUT);
-//    }
+    public Response updateInfoUser(CreatingUser creatingUser, String accestoken) {
+        return getRequestSpec()
+                .header("Authorization", accestoken)
+                .body(creatingUser)
+                .when()
+                .patch(EndPoint.ACTIONS_USER);
+    }
+
+    public Response logOut(LogOut logOut, String accestoken) {
+        return getRequestSpec()
+                .header("Authorization", accestoken)
+                .body(logOut)
+                .when()
+                .post(EndPoint.LOGOUT);
+    }
 }

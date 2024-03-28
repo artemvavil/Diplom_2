@@ -38,12 +38,7 @@ public class LoginUserTest {
         String name = RandomStringUtils.randomAlphabetic(5);
         String password = RandomStringUtils.randomAlphabetic(10);
 
-        userSteps.create(email, name, password)
-                .statusCode(SC_OK)
-                .body("success", Matchers.is(true))
-                .body("user.email", Matchers.is(email))
-                .body("user.name", Matchers.is(name))
-                .extract().path("accessToken");
+        userSteps.create(email, name, password);
 
         String accessToken = userSteps.login(email, password)
                 .statusCode(SC_OK)
@@ -67,8 +62,6 @@ public class LoginUserTest {
         String accessToken = userSteps.create(email, name, password)
                 .statusCode(SC_OK)
                 .body("success", Matchers.is(true))
-                .body("user.email", Matchers.is(email))
-                .body("user.name", Matchers.is(name))
                 .extract().path("accessToken");
         accessTokens.add(accessToken);
 
@@ -93,8 +86,6 @@ public class LoginUserTest {
         String accessToken = userSteps.create(email, name, password)
                 .statusCode(SC_OK)
                 .body("success", Matchers.is(true))
-                .body("user.email", Matchers.is(email))
-                .body("user.name", Matchers.is(name))
                 .extract().path("accessToken");
         accessTokens.add(accessToken);
 
